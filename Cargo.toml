@@ -4,3 +4,7 @@ version = "0.1.0"
 authors = ["c-okelly <conor.okelly@murex.com>"]
 
 [dependencies]
+
+[[bin]]
+name = "day01"
+path = "src/day01.rs"
