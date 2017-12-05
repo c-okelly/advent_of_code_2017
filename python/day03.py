@@ -5,8 +5,6 @@ def main():
 
     puzzleInput = open("python/day03.txt", "r").read()
 
-    # Layer size calc
-    # print(getLayerSize(2))
 
     # Part 1
     # assert(part1("1") == 1)
@@ -17,6 +15,7 @@ def main():
     
     # Part 2
     print(part2(puzzleInput))
+    # print(getNewSquareCorrds((1,-1),3))
 
 def part1(puzzleInput):
     sqaure = int(puzzleInput)
@@ -42,14 +41,65 @@ def part1(puzzleInput):
     # print(minDis,layer, "min")
     return minDis + layer
 
+# def getNextPos(current,gird)
+
 def part2(puzzleInput):
 
-    seed = 11
-    matrix = numpy.zeros(11)
+    grid = {}
+    nextPos = makeGrid(10)
+    # print(nextPos)
+    newVal = 0
 
-    print(matrix)
+    for i in nextPos:
+        if (i == (0,0)):
+            grid[(0,0)] = 1
+        else:
+            newVal = getNewValue(grid, i)
+            print(newVal)
+            grid[(i)] = newVal
+        if (newVal > int(puzzleInput)):
+            break
 
-    return 0
+    return newVal
+
+def makeGrid(size):
+
+    grid = [(0, 0)]
+    layer = 1
+    while layer < size:
+        #R
+        side = 1 + (layer * 2)
+        grid.append((grid[-1][0]+1, grid[-1][1]))
+        #U
+        for i in range(0,side-2):
+            grid.append((grid[-1][0],grid[-1][1]+1))
+        # L
+        for i in range(0,side-1):
+            grid.append((grid[-1][0]-1, grid[-1][1]))
+        # D
+        for i in range(0,side-1):
+            grid.append((grid[-1][0], grid[-1][1]-1))
+        # R
+        for i in range(0,side-1):
+            grid.append((grid[-1][0]+1, grid[-1][1]))
+        layer += 1
+        # print(grid)
+    return grid
+
+
+
+
+
+def getNewValue(dataStruct, position):
+
+    cords = [(1, 0), (1, 1), (0, 1), (-1, 1), (-1, 0), (-1, -1), (0, -1), (1, -1)]
+
+    total = 0
+    for i in cords:
+        x = position[0] + i[0]
+        y = position[1] + i[1]
+        total += dataStruct.get((x,y),0)
+    return total
 
 def setValue(matrix,pos1,pos2,value):
 
