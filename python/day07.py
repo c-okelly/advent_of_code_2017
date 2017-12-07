@@ -5,20 +5,20 @@ def main():
     puzzleInput = open("python/day07.txt", "r").read()
 
     # Part 1
-#     assert(part1("""pbga (66)
-# xhth (57)
-# ebii (61)
-# havc (66)
-# ktlj (57)
-# fwft (72) -> ktlj, cntj, xhth
-# qoyq (66)
-# padx (45) -> pbga, havc, qoyq
-# tknk (41) -> ugml, padx, fwft
-# jptl (61)
-# ugml (68) -> gyxo, ebii, jptl
-# gyxo (61)
-# cntj (57)""") == "tknk")
-#     print(part1(puzzleInput))
+    assert(part1("""pbga (66)
+xhth (57)
+ebii (61)
+havc (66)
+ktlj (57)
+fwft (72) -> ktlj, cntj, xhth
+qoyq (66)
+padx (45) -> pbga, havc, qoyq
+tknk (41) -> ugml, padx, fwft
+jptl (61)
+ugml (68) -> gyxo, ebii, jptl
+gyxo (61)
+cntj (57)""") == "tknk")
+    print(part1(puzzleInput))
     
     # Part 2
     assert(part2("""pbga (66)
@@ -60,7 +60,6 @@ class Program:
         self.name = name
         self.weight = weight
         self.children = []
-        # self.parent = None
         self.totalWeight = 0
         self.totalWeightSet = False
     
@@ -111,19 +110,6 @@ def part2(puzzleInput):
     rootNode.calculateWeight()
 
     oddNodeWeight = findOddNodeOut(rootNode, tree)
-
-        # oddNodeOut =
-        # c = Counter() 
-        # print(rootNode)
-        # for i in rootNode.getChildren():
-        #     print(i.calculateWeight(), i.name)
-        #     c[i.calculateWeight()] += 1
-        # for key in c.keys():
-
-        # print(c)
-
-
-        # break
 
     return oddNodeWeight
 
