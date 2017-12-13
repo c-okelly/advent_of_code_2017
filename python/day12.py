@@ -81,10 +81,9 @@ def part2(puzzleInput):
 
     groups = set()
     for i in connections.keys():
-        curr = set(frozenset(x) for x in connections[i])
-        groups.add(curr)
-    print(groups)
-    return 0
+        groups.add(tuple(sorted(connections[i])))
+    # print(groups)
+    return len(groups)
 
 if __name__ == "__main__":
     main()
