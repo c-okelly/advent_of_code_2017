@@ -31,9 +31,9 @@ def part1(puzzleInput):
     searched = []
 
     key = 0
+    unexplored = []
     while True:
         newPipes = connections.get(0)
-        fo
 
     return 0
 
