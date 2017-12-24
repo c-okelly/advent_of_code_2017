@@ -13,13 +13,17 @@ def main():
 
 def part1(puzzleInput):
 
+    # starting parttern
+    pattern = ".#./..#/###"
+
     rules = puzzleInput.split("\n")
     ruleBook = {}
 
     for rule in rules:
-        # ruleBook[ru]
-        print(rule)
-        print(rule.split(" => "))
+        parts = rule.split(" => ")
+        ruleBook[parts[0]] = parts[1]
+    
+    # Rotate until ma
 
 
     return 0
