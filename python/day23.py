@@ -5,7 +5,7 @@ def main():
 
     # Part 1
     # assert(part1("") == 0)
-    # print(part1(puzzleInput))
+    print(part1(puzzleInput))
     
     # Part 2
     # assert(part2("") == 0)
@@ -61,12 +61,6 @@ def isPrime(a):
            break
 
     return x 
-def check(a):
-
-    for i in range(2, a):
-        if a%i == 0:
-            return True
-    return False
 
 def part2(puzzleInput):
 
@@ -84,36 +78,13 @@ def part2(puzzleInput):
         # define instruction parts
         instruction = puzzleInput[instructionPosition].split(" ")
 
-        # if instructionPosition == 19:
-        # print(instructionPosition, instruction, puzzleInput[instructionPosition], registers)
-
+        # Skip two inner loops
         if instructionPosition == 17:# and count < 18:
             registers['e'] = registers['b']
-            # print(check(registers['b']))
-            if check(registers['b']) == True:
+            if notPrime(registers['b']) == True:
                 registers['f'] = 0
         if instructionPosition == 21:
             registers['d'] = registers['b']
-        # if instructionPosition == 21:# and count < 25:
-        #     registers['d'] = registers['b']
-        # if instructionPosition == 13:#  and count < 25:
-        #     registers['g'] = 105717
-
-        # if instructionPosition == 31:
-        #     second += 1
-        #     print("break")
-        #     print()
-        # if instructionPosition == 31:
-        #     print()
-        #     print()
-        # if instructionPosition == 28:
-        #     print()
-        #     print(registers)
-        # if instructionPosition == 19:
-            # print()
-        # if instructionPosition == 23:
-        #     print()
-        #     print()
 
         # Convert second arg to int if required
         if (len(instruction) > 2):
@@ -138,14 +109,14 @@ def part2(puzzleInput):
 
         instructionPosition += 1
 
-        count +=  1
-        # if count == 100:
-        #     break
-        # if registers.get('e', 0) > 52850:
-        #     break
+    return registers['h']
+ 
+def notPrime(a):
 
-    print(registers)
-    return 0
+    for i in range(2, a):
+        if a%i == 0:
+            return True
+    return False
 
 if __name__ == "__main__":
     main()
